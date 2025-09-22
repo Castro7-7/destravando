@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Destravando Seu Potencial 🚀</title>
   <style>
-    /* Oculta o cursor padrão em toda a página, incluindo links */
+
     * {
       cursor: none !important;
     }
@@ -97,33 +97,23 @@
       text-align: left;
     }
 
-    /* Cursor neon triangular estático apenas para desktops */
-    @media (min-width: 768px) {
-      .cursor-light {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 0;
-        border-left: 12px solid #9b59b6;
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        pointer-events: none;
-        z-index: 1000;
-        filter: drop-shadow(0 0 10px #9b59b6)
-                drop-shadow(0 0 20px #9b59b6)
-                drop-shadow(0 0 30px #9b59b6)
-                drop-shadow(0 0 40px #9b59b6);
-        transform: translate(-50%, -50%);
-      }
-    }
 
-    /* Esconde o cursor neon em celulares/tablets */
-    @media (max-width: 767px) {
-      .cursor-light {
-        display: none;
-      }
+    .cursor-light {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 12px solid #9b59b6;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      pointer-events: none;
+      z-index: 1000;
+      filter: drop-shadow(0 0 10px #9b59b6)
+              drop-shadow(0 0 20px #9b59b6)
+              drop-shadow(0 0 30px #9b59b6)
+              drop-shadow(0 0 40px #9b59b6);
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -165,15 +155,25 @@
     </div>
   </div>
 
-  <!-- Cursor neon triangular -->
+
   <div class="cursor-light" id="cursor-light"></div>
 
   <script>
     const cursor = document.getElementById('cursor-light');
-    document.addEventListener('mousemove', e => {
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.left = e.clientX + 'px';
-    });
+
+
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (!isTouchDevice) {
+
+      document.addEventListener('mousemove', e => {
+        cursor.style.top = e.clientY + 'px';
+        cursor.style.left = e.clientX + 'px';
+      });
+    } else {
+
+      cursor.style.display = 'none';
+    }
   </script>
 </body>
 </html>
