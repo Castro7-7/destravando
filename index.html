@@ -14,6 +14,7 @@ body {
   color: #f5f5f5;
   overflow-x: hidden;
 }
+
 /* CONTAINER */
 .container {
   max-width: 900px;
@@ -24,15 +25,44 @@ body {
   transform: translateY(30px);
   transition: all 1s ease;
 }
-.container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.container.visible { opacity:1; transform: translateY(0); }
 
 /* TEXTOS */
 h1 { color: #9b59b6; font-size: 3em; margin-bottom: 10px; }
 h2 { color: #f5f5f5; font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; }
 p { line-height: 1.7; font-size: 1.1em; }
+
+/* EMOJI FOGUETE */
+#rocket {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+}
+.rocket-launch {
+  animation: flyUp 1s forwards;
+}
+@keyframes flyUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-200px) rotate(30deg); }
+  100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+/* PARTICULAS FOGUETE */
+.particle {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: #9b59b6;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  transform: translate(-50%, -50%);
+  animation: particleFly 0.6s forwards;
+}
+@keyframes particleFly {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%, -100px) scale(0); opacity: 0; }
+}
 
 /* LISTAS */
 ul { list-style: none; padding: 0; margin: 20px 0; }
@@ -42,8 +72,7 @@ ul li {
   padding: 10px 15px; border-left: 5px solid #9b59b6;
   border-radius: 5px; font-size: 1.1em;
   transition: transform 0.2s, opacity 1s;
-  opacity: 0;
-  transform: translateX(-20px);
+  opacity: 0; transform: translateX(-20px);
 }
 ul li span { margin-right: 10px; font-size: 1.3em; display: inline-block; transition: transform 0.2s; }
 ul li:hover span { transform: translateY(-5px); }
@@ -111,7 +140,7 @@ footer a:hover { text-decoration:underline; }
 <body>
 
 <div class="container" id="main-container">
-  <h1>Destravando Seu Potencial 🚀</h1>
+  <h1>Destravando Seu Potencial <span id="rocket">🚀</span></h1>
   <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
   <!-- CAPA -->
@@ -199,6 +228,24 @@ if(isMobile){
   });
 } else { btnFixed.style.display="none"; }
 
+// FOGUETE ANIMADO COM PARTICULAS
+const rocket = document.getElementById('rocket');
+rocket.addEventListener('mouseenter', () => {
+  rocket.classList.add('rocket-launch');
+
+  // Criar partículas neon
+  for (let i = 0; i < 5; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    const offsetX = Math.random()*20 - 10;
+    particle.style.left = rocket.offsetLeft + offsetX + 'px';
+    particle.style.top = rocket.offsetTop + 'px';
+    document.body.appendChild(particle);
+    setTimeout(() => { particle.remove(); }, 600);
+  }
+
+  setTimeout(() => { rocket.classList.remove('rocket-launch'); }, 1200);
+});
 </script>
 </body>
 </html>
