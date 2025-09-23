@@ -146,15 +146,15 @@ footer a:hover { text-decoration:underline; }
     <img src="potencial.png" alt="Capa do livro Destravando Seu Potencial">
   </div>
 
-  <!-- SEÇÃO BENEFÍCIOS -->
+  <!-- BENEFÍCIOS -->
   <div class="section">
     <h2>Benefícios do livro</h2>
     <ul>
-      <li><span>🧠</span> Romper crenças limitantes que te seguram</li>
-      <li><span>🔄</span> Criar novos hábitos positivos em apenas 21 dias</li>
-      <li><span>❤️</span> Desenvolver inteligência emocional e lidar melhor com pressões</li>
-      <li><span>🤝</span> Melhorar soft skills: comunicação, resiliência e colaboração</li>
-      <li><span>📈</span> Montar um plano de evolução pessoal em 90 dias</li>
+      <li><span>🧠</span> Superar limitações e crenças que te seguram</li>
+      <li><span>🔄</span> Melhorar disciplina e criar hábitos positivos</li>
+      <li><span>❤️</span> Aumentar inteligência emocional e resiliência</li>
+      <li><span>🤝</span> Comunicar-se melhor e fortalecer relacionamentos</li>
+      <li><span>📈</span> Crescer pessoal e profissionalmente em 90 dias</li>
     </ul>
   </div>
 
@@ -162,64 +162,54 @@ footer a:hover { text-decoration:underline; }
   <div class="section">
     <h2>O que você vai aprender</h2>
     <ul>
-      <li><span>🧠</span> Romper crenças limitantes</li>
-      <li><span>🔄</span> Criar novos hábitos positivos</li>
-      <li><span>❤️</span> Desenvolver inteligência emocional</li>
-      <li><span>🤝</span> Melhorar comunicação e resiliência</li>
-      <li><span>📈</span> Montar um plano de evolução pessoal</li>
+      <li><span>🧠</span> Identificar e romper crenças limitantes</li>
+      <li><span>🔄</span> Estruturar hábitos diários que geram resultados</li>
+      <li><span>❤️</span> Técnicas para desenvolver inteligência emocional</li>
+      <li><span>🤝</span> Ferramentas para melhorar comunicação e colaboração</li>
+      <li><span>📈</span> Como criar um plano de evolução pessoal eficaz</li>
     </ul>
   </div>
 
-  <!-- PARA QUEM É -->
-  <div class="section">
-    <h2>Para quem é este livro?</h2>
-    <ul>
-      <li><span>👤</span> Pessoas que querem crescer pessoal e profissionalmente</li>
-      <li><span>🎯</span> Quem deseja mais foco e disciplina</li>
-      <li><span>⚡</span> Quem busca agir com consistência</li>
-    </ul>
-  </div>
-
-  <!-- COMPRA -->
+  <!-- COMPRAR -->
   <div class="section" style="text-align:center;">
     <h2>Invista em você</h2>
-    <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.</p>
+    <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.  
+    O próximo nível da sua vida está a um passo!</p>
     <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
   </div>
 
   <!-- GARANTIA -->
   <div class="guarantee">
-    <p><strong>Garantia de 7 dias:</strong> A compra é realizada pelo Cakto e o produto é entregue por email imediatamente após a confirmação.  
-    Caso não fique satisfeito, você pode solicitar reembolso dentro de 7 dias. Compra segura e entrega instantânea.</p>
+    <p><strong>Garantia:</strong> Este produto é entregue via <strong>Cakto</strong> e e-mail. Você tem <strong>7 dias de garantia</strong> para solicitar reembolso caso não fique satisfeito.</p>
   </div>
 
   <!-- DEPOIMENTOS -->
   <div class="testimonials">
     <h2>Depoimentos</h2>
     <div class="testimonial">
-      <p>“O livro mudou minha rotina! Me ajudou a criar disciplina e confiança.”</p>
-      <span>– Lucas S.</span>
+      <p>"Aprendi a organizar minha vida e meus hábitos melhor do que jamais imaginei!"</p>
+      <span>- João S.</span>
     </div>
     <div class="testimonial">
-      <p>“Os hábitos que aprendi mudaram minha vida completamente!”</p>
-      <span>– Mariana R.</span>
+      <p>"O livro realmente ajuda a desbloquear seu potencial. Vale cada centavo."</p>
+      <span>- Maria F.</span>
     </div>
     <div class="testimonial">
-      <p>“Vale cada centavo! Recomendo para quem quer crescer pessoalmente.”</p>
-      <span>– André F.</span>
-    </div>
-
-    <!-- COMENTÁRIOS INTERATIVOS -->
-    <div class="comment-section">
-      <form class="comment-form" id="comment-form">
-        <input type="text" id="comment-name" placeholder="Seu nome" required><br>
-        <textarea id="comment-text" placeholder="Seu comentário" rows="3" required></textarea><br>
-        <button type="submit">Enviar</button>
-      </form>
-      <div id="comment-list"></div>
+      <p>"Simples, direto e com dicas práticas que funcionam no dia a dia."</p>
+      <span>- Lucas R.</span>
     </div>
   </div>
 
+  <!-- COMENTÁRIOS -->
+  <div class="comment-section">
+    <h2>Deixe seu comentário</h2>
+    <form class="comment-form">
+      <input type="text" placeholder="Seu nome" required>
+      <textarea placeholder="Seu comentário" required></textarea>
+      <br>
+      <button type="submit">Enviar comentário</button>
+    </form>
+  </div>
 </div>
 
 <!-- BOTÃO FIXO MOBILE -->
@@ -274,20 +264,6 @@ const rocket = document.getElementById('rocket');
 rocket.addEventListener('mouseenter', () => {
   rocket.style.transition = "transform 1s ease-in";
   rocket.style.transform = "translate(300px, -500px) rotate(720deg)";
-});
-
-// COMENTÁRIOS INTERATIVOS
-const commentForm = document.getElementById('comment-form');
-const commentList = document.getElementById('comment-list');
-commentForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const name = document.getElementById('comment-name').value;
-  const text = document.getElementById('comment-text').value;
-  const commentDiv = document.createElement('div');
-  commentDiv.className = 'testimonial';
-  commentDiv.innerHTML = `<p>“${text}”</p><span>– ${name}</span>`;
-  commentList.prepend(commentDiv);
-  commentForm.reset();
 });
 </script>
 </body>
