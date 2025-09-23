@@ -1,269 +1,204 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Destravando Seu Potencial 🚀</title>
-  <style>
-    * {
-      cursor: none !important;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destravando Seu Potencial 🚀</title>
+<style>
+/* CURSOR */
+* { cursor: none !important; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  background-color: #0d1117;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #0d1117;
-      color: #f5f5f5;
-      overflow-x: hidden;
-    }
+/* TEXTOS */
+h1 { color: #9b59b6; font-size: 3em; margin-bottom: 10px; }
+h2 { color: #f5f5f5; font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; }
+p { line-height: 1.7; font-size: 1.1em; }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
+/* LISTAS */
+ul { list-style: none; padding: 0; margin: 20px 0; }
+ul li {
+  display: flex; align-items: center; justify-content: flex-start;
+  background: #1b1f27; margin-bottom: 10px;
+  padding: 10px 15px; border-left: 5px solid #9b59b6;
+  border-radius: 5px; font-size: 1.1em;
+  transition: transform 0.2s, opacity 1s;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+ul li span { margin-right: 10px; font-size: 1.3em; display: inline-block; transition: transform 0.2s; }
+ul li:hover span { transform: translateY(-5px); }
 
-    h1 {
-      color: #9b59b6;
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
+/* BOTÃO COMPRAR */
+.btn-buy {
+  display: inline-block; padding: 15px 30px;
+  background-color: #9b59b6; color: #f5f5f5;
+  font-weight: bold; text-decoration: none;
+  border-radius: 5px; margin-top: 30px;
+  transition: 0.3s all;
+}
+.btn-buy:hover {
+  background-color: #8e44ad;
+  box-shadow: 0 0 20px #9b59b6,0 0 40px #9b59b6,0 0 60px #9b59b6;
+  transform: scale(1.05);
+}
 
-    h2 {
-      color: #f5f5f5;
-      font-size: 1.5em;
-      margin-top: 30px;
-      margin-bottom: 15px;
-    }
+/* SEÇÕES */
+.section { margin-top: 50px; text-align: left; }
 
-    p {
-      line-height: 1.7;
-      font-size: 1.1em;
-    }
+/* CAPA DO LIVRO */
+.book-cover { margin-top: 30px; text-align: center; opacity: 0; transform: translateY(20px); transition: all 1s; }
+.book-cover.visible { opacity:1; transform: translateY(0); }
+.book-cover img {
+  max-width: 300px; border-radius: 15px;
+  box-shadow: 0 0 20px rgba(155,89,182,0.6);
+  transition: transform 0.3s;
+}
+.book-cover img:hover { transform: scale(1.05); }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-    }
+/* CURSOR NEON */
+.cursor-light {
+  position: fixed; top:0; left:0;
+  width:0; height:0;
+  border-left:12px solid #9b59b6;
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  pointer-events:none; z-index:1000;
+  filter: drop-shadow(0 0 10px #9b59b6)
+          drop-shadow(0 0 20px #9b59b6)
+          drop-shadow(0 0 30px #9b59b6)
+          drop-shadow(0 0 40px #9b59b6);
+  transform: translate(-50%,-50%);
+}
 
-    ul li {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      background: #1b1f27;
-      margin-bottom: 10px;
-      padding: 10px 15px;
-      border-left: 5px solid #9b59b6;
-      border-radius: 5px;
-      font-size: 1.1em;
-      transition: transform 0.2s;
-    }
+/* BOTÃO FIXO MOBILE */
+.btn-fixed {
+  display: none; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background-color: #9b59b6; color: #fff; padding: 15px 30px; border-radius: 30px;
+  font-weight: bold; text-decoration: none; z-index: 999; transition: 0.3s;
+}
+.btn-fixed:hover { background-color:#8e44ad; box-shadow:0 0 20px #9b59b6; }
+@media (max-width:768px){ .btn-fixed{ display:block; } }
 
-    ul li span {
-      margin-right: 10px;
-      font-size: 1.3em;
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    ul li:hover span {
-      transform: translateY(-5px);
-    }
-
-    .btn-buy {
-      display: inline-block;
-      padding: 15px 30px;
-      background-color: #9b59b6;
-      color: #f5f5f5;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 30px;
-      transition: 0.3s all;
-    }
-
-    .btn-buy:hover {
-      background-color: #8e44ad;
-      box-shadow: 0 0 20px #9b59b6, 0 0 40px #9b59b6, 0 0 60px #9b59b6;
-      transform: scale(1.05);
-    }
-
-    .section {
-      margin-top: 50px;
-      text-align: left;
-    }
-
-    .cursor-light {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      border-left: 12px solid #9b59b6;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      pointer-events: none;
-      z-index: 1000;
-      filter: drop-shadow(0 0 10px #9b59b6)
-              drop-shadow(0 0 20px #9b59b6)
-              drop-shadow(0 0 30px #9b59b6)
-              drop-shadow(0 0 40px #9b59b6);
-      transform: translate(-50%, -50%);
-    }
-
-    /* BOTÃO FIXO PARA MOBILE */
-    .btn-fixed {
-      display: none;
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #9b59b6;
-      color: #fff;
-      padding: 15px 30px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 999;
-      transition: 0.3s;
-    }
-
-    .btn-fixed:hover {
-      background-color: #8e44ad;
-      box-shadow: 0 0 20px #9b59b6;
-    }
-
-    @media (max-width: 768px) {
-      .btn-fixed {
-        display: block;
-      }
-    }
-
-    /* RODAPÉ */
-    footer {
-      background: #1b1f27;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #aaa;
-    }
-
-    footer a {
-      color: #9b59b6;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* CAPA DO LIVRO */
-    .book-cover {
-      margin-top: 30px;
-      text-align: center;
-    }
-
-    .book-cover img {
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(155, 89, 182, 0.6);
-      transition: transform 0.3s;
-    }
-
-    .book-cover img:hover {
-      transform: scale(1.05);
-    }
-  </style>
+/* RODAPÉ */
+footer {
+  background:#1b1f27; text-align:center;
+  padding:20px; margin-top:50px; font-size:0.9em; color:#aaa;
+}
+footer a { color:#9b59b6; text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Destravando Seu Potencial 🚀</h1>
-    <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
-    <!-- CAPA DO LIVRO -->
-    <div class="book-cover">
-      <img src="potencial.png" alt="Capa do livro Destravando Seu Potencial">
-    </div>
-    
-    <div class="section">
-      <p>Você sente que tem mais a oferecer, mas algo ainda te impede de avançar?  
-      O livro <strong>Destravando Seu Potencial</strong> é um guia prático que ajuda você a liberar a força interior que já existe dentro de si.</p>
-    </div>
+<div class="container" id="main-container">
+  <h1>Destravando Seu Potencial 🚀</h1>
+  <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
-    <div class="section">
-      <h2>Benefícios do livro</h2>
-      <ul>
-        <li><span>🧠</span> Romper crenças limitantes que te seguram</li>
-        <li><span>🔄</span> Criar novos hábitos positivos em apenas 21 dias</li>
-        <li><span>❤️</span> Desenvolver inteligência emocional e lidar melhor com pressões</li>
-        <li><span>🤝</span> Melhorar soft skills: comunicação, resiliência e colaboração</li>
-        <li><span>📈</span> Montar um plano de evolução pessoal em 90 dias</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>Para quem é este livro?</h2>
-      <ul>
-        <li><span>👤</span> Pessoas que querem crescer na vida pessoal e profissional</li>
-        <li><span>🎯</span> Quem deseja mais foco, disciplina e confiança</li>
-        <li><span>⚡</span> Quem busca ferramentas para vencer a procrastinação e agir com consistência</li>
-      </ul>
-    </div>
-
-    <div class="section" style="text-align:center;">
-      <h2>Invista em você</h2>
-      <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.  
-      O próximo nível da sua vida está a um passo!</p>
-      <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
-    </div>
+  <!-- CAPA -->
+  <div class="book-cover" id="book-cover">
+    <img src="potencial.png" alt="Capa do livro Destravando Seu Potencial">
   </div>
 
-  <!-- BOTÃO FIXO MOBILE -->
-  <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-fixed" id="btn-fixed">📘 Comprar Agora</a>
+  <div class="section">
+    <p>Você sente que tem mais a oferecer, mas algo ainda te impede de avançar?  
+    O livro <strong>Destravando Seu Potencial</strong> é um guia prático que ajuda você a liberar a força interior que já existe dentro de si.</p>
+  </div>
 
-  <!-- RODAPÉ -->
-  <footer id="footer">
-    <p>© 2025 Destravando Seu Potencial</p>
-    <p>
-      <a href="https://www.sebrae.com.br/sites/PortalSebrae/politica-de-privacidade" target="_blank">Política de Privacidade</a> | 
-      <a href="https://www.jusbrasil.com.br/topicos/10606852/termos-de-uso" target="_blank">Termos de Uso</a>
-    </p>
-  </footer>
+  <div class="section">
+    <h2>Benefícios do livro</h2>
+    <ul>
+      <li><span>🧠</span> Romper crenças limitantes que te seguram</li>
+      <li><span>🔄</span> Criar novos hábitos positivos em apenas 21 dias</li>
+      <li><span>❤️</span> Desenvolver inteligência emocional e lidar melhor com pressões</li>
+      <li><span>🤝</span> Melhorar soft skills: comunicação, resiliência e colaboração</li>
+      <li><span>📈</span> Montar um plano de evolução pessoal em 90 dias</li>
+    </ul>
+  </div>
 
-  <div class="cursor-light" id="cursor-light"></div>
+  <div class="section">
+    <h2>Para quem é este livro?</h2>
+    <ul>
+      <li><span>👤</span> Pessoas que querem crescer na vida pessoal e profissional</li>
+      <li><span>🎯</span> Quem deseja mais foco, disciplina e confiança</li>
+      <li><span>⚡</span> Quem busca ferramentas para vencer a procrastinação e agir com consistência</li>
+    </ul>
+  </div>
 
-  <script>
-    const cursor = document.getElementById('cursor-light');
-    const btnFixed = document.getElementById('btn-fixed');
-    const footer = document.getElementById('footer');
+  <div class="section" style="text-align:center;">
+    <h2>Invista em você</h2>
+    <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.  
+    O próximo nível da sua vida está a um passo!</p>
+    <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
+  </div>
+</div>
 
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+<!-- BOTÃO FIXO MOBILE -->
+<a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-fixed" id="btn-fixed">📘 Comprar Agora</a>
 
-    if (!isTouchDevice) {
-      document.addEventListener('mousemove', e => {
-        cursor.style.top = e.clientY + 'px';
-        cursor.style.left = e.clientX + 'px';
-      });
-    } else {
-      cursor.style.display = 'none';
-    }
+<!-- RODAPÉ -->
+<footer id="footer">
+  <p>© 2025 Destravando Seu Potencial</p>
+  <p>
+    <a href="https://www.sebrae.com.br/sites/PortalSebrae/politica-de-privacidade" target="_blank">Política de Privacidade</a> | 
+    <a href="https://www.jusbrasil.com.br/topicos/10606852/termos-de-uso" target="_blank">Termos de Uso</a>
+  </p>
+</footer>
 
-    // Esconde o botão fixo quando o usuário chega no rodapé
-    window.addEventListener('scroll', () => {
-      const footerTop = footer.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
+<div class="cursor-light" id="cursor-light"></div>
 
-      if (footerTop <= windowHeight) {
-        btnFixed.style.display = "none";
-      } else {
-        btnFixed.style.display = "block";
-      }
-    });
-  </script>
+<script>
+// CURSOR NEON
+const cursor = document.getElementById('cursor-light');
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (!isTouchDevice){
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY+'px';
+    cursor.style.left = e.clientX+'px';
+  });
+} else { cursor.style.display='none'; }
+
+// FADE-IN
+window.addEventListener('load', ()=>{
+  document.getElementById('main-container').classList.add('visible');
+  document.getElementById('book-cover').classList.add('visible');
+  document.querySelectorAll('ul li').forEach((li, i)=>{
+    setTimeout(()=>{ li.style.opacity='1'; li.style.transform='translateX(0)'; }, i*150);
+  });
+});
+
+// BOTÃO FIXO MOBILE
+const btnFixed = document.getElementById('btn-fixed');
+const footer = document.getElementById('footer');
+const isMobile = window.matchMedia("(max-width:768px)").matches;
+if(isMobile){
+  window.addEventListener('scroll', ()=>{
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if(footerTop <= windowHeight){ btnFixed.style.display="none"; }
+    else { btnFixed.style.display="block"; }
+  });
+} else { btnFixed.style.display="none"; }
+
+</script>
 </body>
 </html>
