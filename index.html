@@ -112,12 +112,20 @@ ul li:hover span { transform: translateY(-5px); }
 }
 .testimonial.visible { opacity:1; transform: translateY(0); }
 
-/* GARANTIA */
-.guarantee {
+/* GARANTIA FINAL */
+.final-guarantee {
   background:#1b1f27; padding:20px; border-radius:10px;
   text-align:center; margin-top:30px;
   box-shadow: 0 0 10px rgba(155,89,182,0.4);
 }
+
+/* PROMOÇÃO MINI GUIA */
+.promo {
+  background:#9b59b6; padding:15px 20px; border-radius:10px; margin-bottom:30px;
+  color:#fff; font-weight:bold; box-shadow: 0 0 10px rgba(155,89,182,0.6);
+  opacity:0; transform: translateY(-20px); transition: all 0.8s;
+}
+.promo.visible { opacity:1; transform: translateY(0); }
 
 /* RODAPÉ */
 footer {
@@ -142,6 +150,12 @@ footer a:hover { text-decoration:underline; }
 <body>
 
 <div class="container" id="main-container">
+
+  <!-- PROMOÇÃO MINI GUIA -->
+  <div class="promo" id="promo">
+    🎁 Comprando o livro hoje, você recebe o Mini-Guia Exclusivo totalmente grátis!
+  </div>
+
   <h1>Destravando Seu Potencial <span id="rocket">🚀</span></h1>
   <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
@@ -187,14 +201,14 @@ footer a:hover { text-decoration:underline; }
     <div class="testimonial">"Simples, direto e transformador!" — Carlos P.</div>
   </div>
 
-  <!-- GARANTIA -->
-  <div class="guarantee">
-    <p>Compra 100% segura. Garantia de satisfação em 7 dias.</p>
-  </div>
-
-  <!-- BOTAO COMPRAR -->
+  <!-- BOTÃO COMPRAR -->
   <div class="section" style="text-align:center;">
     <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
+  </div>
+
+  <!-- GARANTIA FINAL -->
+  <div class="final-guarantee">
+    <p>Compra 100% segura. Garantia de satisfação em 7 dias. Se você não ficar satisfeito com o conteúdo, devolvemos seu dinheiro sem complicações!</p>
   </div>
 </div>
 
@@ -227,6 +241,7 @@ if (!isTouchDevice){
 window.addEventListener('load', ()=>{
   document.getElementById('main-container').classList.add('visible');
   document.getElementById('book-cover').classList.add('visible');
+  document.getElementById('promo').classList.add('visible');
   document.querySelectorAll('ul li').forEach((li, i)=>{
     setTimeout(()=>{ li.style.opacity='1'; li.style.transform='translateX(0)'; }, i*150);
   });
