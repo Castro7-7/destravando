@@ -16,6 +16,14 @@
       background-color: #0d1117;
       color: #f5f5f5;
       overflow-x: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .container {
@@ -172,7 +180,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <img src="destrave seu potencial (1).png" alt="Capa do Livro Destravando Seu Potencial">
+      <img src="destravando-seu-potencial.png" alt="Capa do Livro Destravando Seu Potencial">
       <div>
         <h1>Destravando Seu Potencial 🚀</h1>
         <p><strong>Ative suas habilidades e supere seus limites</strong></p>
@@ -254,6 +262,11 @@
     } else {
       cursor.style.display = 'none';
     }
+
+    // Efeito de entrada
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
   </script>
 </body>
 </html>
