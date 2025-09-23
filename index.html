@@ -104,14 +104,27 @@ ul li:hover span { transform: translateY(-5px); }
 .btn-fixed:hover { background-color:#8e44ad; box-shadow:0 0 20px #9b59b6; }
 @media (max-width:768px){ .btn-fixed{ display:block; } }
 
+/* GARANTIA */
+.guarantee { background:#1b1f27; border-left:5px solid #9b59b6; margin:30px 0 0 0; padding:15px; border-radius:5px; text-align:left; }
+
 /* DEPOIMENTOS */
 .testimonials { margin-top:50px; text-align:center; }
 .testimonial { background:#1b1f27; border-left:5px solid #9b59b6; margin-bottom:15px; padding:15px; border-radius:5px; text-align:left; }
 .testimonial p { margin:0; }
 .testimonial span { display:block; margin-top:5px; font-weight:bold; color:#9b59b6; }
 
-/* GARANTIA */
-.guarantee { background:#1b1f27; border-left:5px solid #9b59b6; margin:30px 0 0 0; padding:15px; border-radius:5px; text-align:left; }
+/* COMENTÁRIOS */
+.comment-section { margin-top:40px; text-align:center; }
+.comment-form input, .comment-form textarea {
+  width:90%; max-width:500px; padding:10px; margin:5px 0;
+  border-radius:5px; border:1px solid #9b59b6; background:#0d1117; color:#f5f5f5;
+}
+.comment-form button {
+  padding:10px 20px; border:none; border-radius:5px; background:#9b59b6; color:#fff;
+  font-weight:bold; cursor:pointer;
+  transition:0.3s;
+}
+.comment-form button:hover { background:#8e44ad; }
 
 /* RODAPÉ */
 footer {
@@ -165,28 +178,39 @@ footer a:hover { text-decoration:underline; }
     <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
   </div>
 
+  <!-- GARANTIA -->
+  <div class="guarantee">
+    <p><strong>Garantia de 7 dias:</strong> A compra é realizada pelo Cakto e o produto é entregue por email imediatamente após a confirmação.  
+    Caso não fique satisfeito, você pode solicitar reembolso dentro de 7 dias. Compra segura e entrega instantânea.</p>
+  </div>
+
   <!-- DEPOIMENTOS -->
   <div class="testimonials">
-    <h2>O que estão dizendo</h2>
+    <h2>Depoimentos</h2>
     <div class="testimonial">
-      <p>“Simplesmente transformador! Me ajudou a criar disciplina e confiança.”</p>
+      <p>“O livro mudou minha rotina! Me ajudou a criar disciplina e confiança.”</p>
       <span>– Lucas S.</span>
     </div>
     <div class="testimonial">
-      <p>“Os hábitos que aprendi mudaram minha rotina completamente!”</p>
+      <p>“Os hábitos que aprendi mudaram minha vida completamente!”</p>
       <span>– Mariana R.</span>
     </div>
     <div class="testimonial">
       <p>“Vale cada centavo! Recomendo para quem quer crescer pessoalmente.”</p>
       <span>– André F.</span>
     </div>
+
+    <!-- COMENTÁRIOS INTERATIVOS -->
+    <div class="comment-section">
+      <form class="comment-form" id="comment-form">
+        <input type="text" id="comment-name" placeholder="Seu nome" required><br>
+        <textarea id="comment-text" placeholder="Seu comentário" rows="3" required></textarea><br>
+        <button type="submit">Enviar</button>
+      </form>
+      <div id="comment-list"></div>
+    </div>
   </div>
 
-  <!-- GARANTIA -->
-  <div class="guarantee">
-    <p><strong>Garantia de 7 dias</strong>: Seu produto é entregue via Cakto e também por email.  
-    Caso não fique satisfeito, você pode solicitar reembolso dentro de 7 dias após a compra. Compra segura e entrega imediata.</p>
-  </div>
 </div>
 
 <!-- BOTÃO FIXO MOBILE -->
@@ -241,6 +265,20 @@ const rocket = document.getElementById('rocket');
 rocket.addEventListener('mouseenter', () => {
   rocket.style.transition = "transform 1s ease-in";
   rocket.style.transform = "translate(300px, -500px) rotate(720deg)";
+});
+
+// COMENTÁRIOS INTERATIVOS
+const commentForm = document.getElementById('comment-form');
+const commentList = document.getElementById('comment-list');
+commentForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('comment-name').value;
+  const text = document.getElementById('comment-text').value;
+  const commentDiv = document.createElement('div');
+  commentDiv.className = 'testimonial';
+  commentDiv.innerHTML = `<p>“${text}”</p><span>– ${name}</span>`;
+  commentList.prepend(commentDiv);
+  commentForm.reset();
 });
 </script>
 </body>
