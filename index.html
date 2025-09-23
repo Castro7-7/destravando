@@ -16,14 +16,6 @@
       background-color: #0d1117;
       color: #f5f5f5;
       overflow-x: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    body.loaded {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .container {
@@ -36,6 +28,9 @@
       color: #9b59b6;
       font-size: 3em;
       margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 1s ease forwards;
     }
 
     h2 {
@@ -44,11 +39,15 @@
       margin-top: 40px;
       margin-bottom: 20px;
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
     }
 
-    p {
-      line-height: 1.7;
-      font-size: 1.1em;
+    p, li, .btn-buy, .testimonial, .guarantee, .bonus {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
     }
 
     .hero {
@@ -65,6 +64,9 @@
       max-width: 280px;
       border-radius: 10px;
       box-shadow: 0 0 20px #9b59b6;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeInScale 1s ease forwards;
     }
 
     ul {
@@ -107,6 +109,7 @@
       border-radius: 5px;
       margin-top: 30px;
       transition: 0.3s all;
+      animation-delay: 0.3s;
     }
 
     .btn-buy:hover {
@@ -156,6 +159,21 @@
       border: 1px solid #9b59b6;
     }
 
+    .bonus {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 0 20px #9b59b6;
+    }
+
+    .bonus span {
+      font-size: 1.5em;
+    }
+
     .cursor-light {
       position: fixed;
       top: 0;
@@ -173,6 +191,17 @@
               drop-shadow(0 0 40px #9b59b6);
       transform: translate(-50%, -50%);
     }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -180,7 +209,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <img src="destravando-seu-potencial.png" alt="Capa do Livro Destravando Seu Potencial">
+      <img src="destravando seu potencial (1).png" alt="Capa do Livro Destravando Seu Potencial">
       <div>
         <h1>Destravando Seu Potencial 🚀</h1>
         <p><strong>Ative suas habilidades e supere seus limites</strong></p>
@@ -231,6 +260,12 @@
       </div>
     </div>
 
+    <!-- Bônus -->
+    <div class="bonus">
+      <span>🎁 BÔNUS ESPECIAL:</span>  
+      Comprando hoje você recebe gratuitamente um <u>Mini Guia de Exercícios Práticos</u> para aplicar o conteúdo do livro no seu dia a dia.
+    </div>
+
     <!-- Preço e CTA final -->
     <div class="section" style="text-align:center;">
       <h2>Invista em você</h2>
@@ -241,6 +276,7 @@
 
     <!-- Garantia -->
     <div class="guarantee">
+      ✅ Satisfação garantida ou seu dinheiro de volta em até 7 dias.  
       🔒 Compra 100% segura via Cakto.  
       📩 O livro será enviado diretamente para o seu e-mail após a confirmação.
     </div>
@@ -263,9 +299,10 @@
       cursor.style.display = 'none';
     }
 
-    // Efeito de entrada
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
+    // Delay nas animações
+    const animatedElements = document.querySelectorAll("h2, p, li, .btn-buy, .testimonial, .guarantee, .bonus");
+    animatedElements.forEach((el, i) => {
+      el.style.animationDelay = `${0.2 * i}s`;
     });
   </script>
 </body>
