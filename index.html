@@ -19,54 +19,28 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 900px;
       margin: auto;
       padding: 40px 20px;
+      text-align: center;
     }
 
     h1 {
       color: #9b59b6;
       font-size: 3em;
       margin-bottom: 10px;
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInUp 1s ease forwards;
     }
 
     h2 {
       color: #f5f5f5;
-      font-size: 1.8em;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards;
+      font-size: 1.5em;
+      margin-top: 30px;
+      margin-bottom: 15px;
     }
 
-    p, li, .btn-buy, .testimonial, .guarantee, .bonus, footer {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    .hero img {
-      max-width: 280px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #9b59b6;
-      opacity: 0;
-      transform: scale(0.9);
-      animation: fadeInScale 1s ease forwards;
+    p {
+      line-height: 1.7;
+      font-size: 1.1em;
     }
 
     ul {
@@ -109,7 +83,6 @@
       border-radius: 5px;
       margin-top: 30px;
       transition: 0.3s all;
-      animation-delay: 0.3s;
     }
 
     .btn-buy:hover {
@@ -120,101 +93,7 @@
 
     .section {
       margin-top: 50px;
-    }
-
-    .testimonials {
-      display: grid;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .testimonial {
-      background: #1b1f27;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 1em;
-      position: relative;
-    }
-
-    .testimonial::before {
-      content: "💬";
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      font-size: 1.2em;
-    }
-
-    .testimonial strong {
-      display: block;
-      margin-top: 10px;
-      color: #9b59b6;
-    }
-
-    .guarantee {
-      background: #1b1f27;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 30px;
-      text-align: center;
-      border: 1px solid #9b59b6;
-    }
-
-    .bonus {
-      background: linear-gradient(135deg, #9b59b6, #8e44ad);
-      padding: 25px;
-      border-radius: 10px;
-      margin-top: 40px;
-      text-align: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      box-shadow: 0 0 20px #9b59b6;
-    }
-
-    .bonus span {
-      font-size: 1.5em;
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      background: #1b1f27;
-      text-align: center;
-      font-size: 0.9em;
-      color: #ccc;
-      border-top: 1px solid #333;
-    }
-
-    footer a {
-      color: #9b59b6;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Botão fixo para mobile */
-    .btn-fixed {
-      display: none;
-      position: fixed;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #9b59b6;
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 15px #9b59b6;
-      z-index: 999;
-    }
-
-    @media (max-width: 768px) {
-      .btn-fixed {
-        display: block;
-      }
+      text-align: left;
     }
 
     .cursor-light {
@@ -235,32 +114,87 @@
       transform: translate(-50%, -50%);
     }
 
-    /* Animações */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* BOTÃO FIXO PARA MOBILE */
+    .btn-fixed {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #9b59b6;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 999;
+      transition: 0.3s;
     }
 
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    .btn-fixed:hover {
+      background-color: #8e44ad;
+      box-shadow: 0 0 20px #9b59b6;
+    }
+
+    @media (max-width: 768px) {
+      .btn-fixed {
+        display: block;
+      }
+    }
+
+    /* RODAPÉ */
+    footer {
+      background: #1b1f27;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    footer a {
+      color: #9b59b6;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* CAPA DO LIVRO */
+    .book-cover {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .book-cover img {
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(155, 89, 182, 0.6);
+      transition: transform 0.3s;
+    }
+
+    .book-cover img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <h1>Destravando Seu Potencial 🚀</h1>
+    <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
-    <!-- Hero -->
-    <div class="hero">
-      <img src="potencial.png" alt="Capa do Livro Destravando Seu Potencial">
-      <div>
-        <h1>Destravando Seu Potencial 🚀</h1>
-        <p><strong>Ative suas habilidades e supere seus limites</strong></p>
-        <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Adquira já o seu exemplar</a>
-      </div>
+    <!-- CAPA DO LIVRO -->
+    <div class="book-cover">
+      <img src="potencial.png" alt="Capa do livro Destravando Seu Potencial">
+    </div>
+    
+    <div class="section">
+      <p>Você sente que tem mais a oferecer, mas algo ainda te impede de avançar?  
+      O livro <strong>Destravando Seu Potencial</strong> é um guia prático que ajuda você a liberar a força interior que já existe dentro de si.</p>
     </div>
 
-    <!-- Benefícios -->
     <div class="section">
       <h2>Benefícios do livro</h2>
       <ul>
@@ -272,78 +206,42 @@
       </ul>
     </div>
 
-    <!-- O que vai aprender -->
     <div class="section">
-      <h2>O que você vai aprender</h2>
+      <h2>Para quem é este livro?</h2>
       <ul>
-        <li><span>📖</span> Como identificar e eliminar sabotadores internos</li>
-        <li><span>📝</span> Métodos para organizar sua rotina e alcançar metas</li>
-        <li><span>⚡</span> Técnicas de produtividade aplicáveis no dia a dia</li>
-        <li><span>🌱</span> Estratégias para manter consistência e disciplina</li>
-        <li><span>🚀</span> Passo a passo para transformar sonhos em resultados</li>
+        <li><span>👤</span> Pessoas que querem crescer na vida pessoal e profissional</li>
+        <li><span>🎯</span> Quem deseja mais foco, disciplina e confiança</li>
+        <li><span>⚡</span> Quem busca ferramentas para vencer a procrastinação e agir com consistência</li>
       </ul>
     </div>
 
-    <!-- Depoimentos -->
-    <div class="section">
-      <h2>O que dizem os leitores</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          "Esse livro mudou minha forma de enxergar a vida. Em poucas semanas já senti diferença na minha rotina!"
-          <strong>— Mariana S.</strong>
-        </div>
-        <div class="testimonial">
-          "Direto, prático e motivador. Recomendo para qualquer pessoa que quer evoluir."
-          <strong>— Lucas A.</strong>
-        </div>
-        <div class="testimonial">
-          "Foi o empurrão que eu precisava para parar de procrastinar."
-          <strong>— João P.</strong>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bônus -->
-    <div class="bonus">
-      <span>🎁 BÔNUS ESPECIAL:</span>  
-      Comprando hoje você recebe gratuitamente um <u>Mini Guia de Exercícios Práticos</u> para aplicar o conteúdo do livro no seu dia a dia.
-    </div>
-
-    <!-- Preço e CTA final -->
     <div class="section" style="text-align:center;">
       <h2>Invista em você</h2>
-      <p>Por apenas <strong>R$ 25,99</strong>, você recebe acesso imediato ao livro no seu e-mail.  
+      <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.  
       O próximo nível da sua vida está a um passo!</p>
       <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
     </div>
-
-    <!-- Garantia -->
-    <div class="guarantee">
-      ✅ Satisfação garantida ou seu dinheiro de volta em até 7 dias.  
-      🔒 Compra 100% segura via Cakto.  
-      📩 O livro será enviado diretamente para o seu e-mail após a confirmação.
-    </div>
-
   </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 Destravando Seu Potencial. Todos os direitos reservados.</p>
+  <!-- BOTÃO FIXO MOBILE -->
+  <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-fixed" id="btn-fixed">📘 Comprar Agora</a>
+
+  <!-- RODAPÉ -->
+  <footer id="footer">
+    <p>© 2025 Destravando Seu Potencial</p>
     <p>
-      <a href="#">Política de Privacidade</a> | 
-      <a href="#">Termos de Uso</a> | 
-      <a href="mailto:suporte@email.com">Suporte</a>
+      <a href="https://www.sebrae.com.br/sites/PortalSebrae/politica-de-privacidade" target="_blank">Política de Privacidade</a> | 
+      <a href="https://www.jusbrasil.com.br/topicos/10606852/termos-de-uso" target="_blank">Termos de Uso</a>
     </p>
   </footer>
 
-  <!-- Botão fixo (mobile) -->
-  <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-fixed">📘 Comprar agora</a>
-
-  <!-- Cursor customizado -->
   <div class="cursor-light" id="cursor-light"></div>
 
   <script>
     const cursor = document.getElementById('cursor-light');
+    const btnFixed = document.getElementById('btn-fixed');
+    const footer = document.getElementById('footer');
+
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     if (!isTouchDevice) {
@@ -355,10 +253,16 @@
       cursor.style.display = 'none';
     }
 
-    // Delay nas animações
-    const animatedElements = document.querySelectorAll("h2, p, li, .btn-buy, .testimonial, .guarantee, .bonus, footer");
-    animatedElements.forEach((el, i) => {
-      el.style.animationDelay = `${0.2 * i}s`;
+    // Esconde o botão fixo quando o usuário chega no rodapé
+    window.addEventListener('scroll', () => {
+      const footerTop = footer.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (footerTop <= windowHeight) {
+        btnFixed.style.display = "none";
+      } else {
+        btnFixed.style.display = "block";
+      }
     });
   </script>
 </body>
