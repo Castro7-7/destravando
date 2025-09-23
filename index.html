@@ -13,7 +13,6 @@ body {
   background-color: #0d1117;
   color: #f5f5f5;
   overflow-x: hidden;
-  position: relative;
 }
 
 /* CONTAINER */
@@ -103,29 +102,7 @@ ul li:hover span { transform: translateY(-5px); }
   font-weight: bold; text-decoration: none; z-index: 999; transition: 0.3s;
 }
 .btn-fixed:hover { background-color:#8e44ad; box-shadow:0 0 20px #9b59b6; }
-
-/* DEPOIMENTOS */
-.testimonial {
-  background:#1b1f27; padding:15px; border-radius:10px;
-  margin-bottom:15px; box-shadow: 0 0 10px rgba(155,89,182,0.4);
-  opacity:0; transform: translateY(20px); transition: all 0.6s;
-}
-.testimonial.visible { opacity:1; transform: translateY(0); }
-
-/* GARANTIA FINAL */
-.final-guarantee {
-  background:#1b1f27; padding:20px; border-radius:10px;
-  text-align:center; margin-top:30px;
-  box-shadow: 0 0 10px rgba(155,89,182,0.4);
-}
-
-/* PROMOÇÃO MINI GUIA */
-.promo {
-  background:#9b59b6; padding:15px 20px; border-radius:10px; margin-bottom:30px;
-  color:#fff; font-weight:bold; box-shadow: 0 0 10px rgba(155,89,182,0.6);
-  opacity:0; transform: translateY(-20px); transition: all 0.8s;
-}
-.promo.visible { opacity:1; transform: translateY(0); }
+@media (max-width:768px){ .btn-fixed{ display:block; } }
 
 /* RODAPÉ */
 footer {
@@ -134,28 +111,11 @@ footer {
 }
 footer a { color:#9b59b6; text-decoration:none; margin:0 10px; }
 footer a:hover { text-decoration:underline; }
-
-/* PARTICULAS SUAVES */
-.particle {
-  position:absolute; width:5px; height:5px;
-  background:#9b59b6; border-radius:50%;
-  opacity:0.7; pointer-events:none;
-  animation: float 1s linear forwards;
-}
-@keyframes float {
-  to { transform: translateY(-50px) translateX(30px); opacity:0; }
-}
 </style>
 </head>
 <body>
 
 <div class="container" id="main-container">
-
-  <!-- PROMOÇÃO MINI GUIA -->
-  <div class="promo" id="promo">
-    🎁 Comprando o livro hoje, você recebe o Mini-Guia Exclusivo totalmente grátis!
-  </div>
-
   <h1>Destravando Seu Potencial <span id="rocket">🚀</span></h1>
   <p><strong>Ative suas habilidades e supere seus limites</strong></p>
 
@@ -164,13 +124,11 @@ footer a:hover { text-decoration:underline; }
     <img src="potencial.png" alt="Capa do livro Destravando Seu Potencial">
   </div>
 
-  <!-- INTRO -->
   <div class="section">
     <p>Você sente que tem mais a oferecer, mas algo ainda te impede de avançar?  
     O livro <strong>Destravando Seu Potencial</strong> é um guia prático que ajuda você a liberar a força interior que já existe dentro de si.</p>
   </div>
 
-  <!-- BENEFICIOS -->
   <div class="section">
     <h2>Benefícios do livro</h2>
     <ul>
@@ -182,33 +140,20 @@ footer a:hover { text-decoration:underline; }
     </ul>
   </div>
 
-  <!-- RESULTADOS -->
   <div class="section">
-    <h2>O que você vai aprender</h2>
+    <h2>Para quem é este livro?</h2>
     <ul>
-      <li><span>⚡</span> Como agir com consistência e disciplina</li>
-      <li><span>🎯</span> Como definir metas e alcançá-las</li>
-      <li><span>💡</span> Como vencer a procrastinação</li>
-      <li><span>🔥</span> Como desenvolver confiança e foco</li>
+      <li><span>👤</span> Pessoas que querem crescer na vida pessoal e profissional</li>
+      <li><span>🎯</span> Quem deseja mais foco, disciplina e confiança</li>
+      <li><span>⚡</span> Quem busca ferramentas para vencer a procrastinação e agir com consistência</li>
     </ul>
   </div>
 
-  <!-- DEPOIMENTOS -->
-  <div class="section">
-    <h2>Depoimentos</h2>
-    <div class="testimonial">"Esse livro mudou minha forma de pensar e agir!" — João S.</div>
-    <div class="testimonial">"Apliquei os ensinamentos e melhorei minha produtividade." — Maria L.</div>
-    <div class="testimonial">"Simples, direto e transformador!" — Carlos P.</div>
-  </div>
-
-  <!-- BOTÃO COMPRAR -->
   <div class="section" style="text-align:center;">
+    <h2>Invista em você</h2>
+    <p>Por apenas <strong>R$ 25,99</strong> comece hoje mesmo a destravar seu verdadeiro potencial.  
+    O próximo nível da sua vida está a um passo!</p>
     <a href="https://pay.cakto.com.br/wmi928p_580156" class="btn-buy">Garanta já o seu exemplar</a>
-  </div>
-
-  <!-- GARANTIA FINAL -->
-  <div class="final-guarantee">
-    <p>Compra 100% segura. Garantia de satisfação em 7 dias. Se você não ficar satisfeito com o conteúdo, devolvemos seu dinheiro sem complicações!</p>
   </div>
 </div>
 
@@ -241,12 +186,8 @@ if (!isTouchDevice){
 window.addEventListener('load', ()=>{
   document.getElementById('main-container').classList.add('visible');
   document.getElementById('book-cover').classList.add('visible');
-  document.getElementById('promo').classList.add('visible');
   document.querySelectorAll('ul li').forEach((li, i)=>{
     setTimeout(()=>{ li.style.opacity='1'; li.style.transform='translateX(0)'; }, i*150);
-  });
-  document.querySelectorAll('.testimonial').forEach((t, i)=>{
-    setTimeout(()=>{ t.classList.add('visible'); }, i*200);
   });
 });
 
@@ -263,11 +204,14 @@ if(isMobile){
   });
 } else { btnFixed.style.display="none"; }
 
-// FOGUETE ANIMADO
+// FOGUETE ANIMADO COM PARTICULAS NA DIAGONAL
 const rocket = document.getElementById('rocket');
 rocket.addEventListener('mouseenter', () => {
+  // Movimentação diagonal
   rocket.style.transition = "transform 1s ease-in";
   rocket.style.transform = "translate(300px, -500px) rotate(720deg)";
+  
+  // Criar partículas neon
   for (let i = 0; i < 5; i++) {
     const particle = document.createElement('div');
     particle.classList.add('particle');
